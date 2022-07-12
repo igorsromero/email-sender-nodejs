@@ -1,4 +1,4 @@
-import express from "express"
+import express, { urlencoded } from "express"
 
 import { Routes } from "./interfaces/routes.interface"
 
@@ -10,6 +10,7 @@ export default class App {
     this.app = express()
     this.port = 9090
 
+    this.initializeMiddlewares()
     this.initializeRoutes(routes)
   }
 
@@ -27,5 +28,10 @@ export default class App {
 
   public initializeRoutes(routes: Routes[]) {
     routes.forEach(route => this.app.use(`/`, route.router))
+  }
+
+  public initializeMiddlewares() {
+    this.app.use(express.json())
+    this.app.use(urlencoded({ extended: true }))
   }
 }
