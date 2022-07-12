@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/igorsromero/email-sender-nodejs.git",
   "author": "Igor Solfa Romero <igorsolfaromero@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
