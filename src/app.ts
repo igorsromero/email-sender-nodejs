@@ -1,4 +1,5 @@
 import express, { urlencoded } from "express"
+import { connect } from "mongoose"
 
 import { Routes } from "./interfaces/routes.interface"
 
@@ -10,6 +11,7 @@ export default class App {
     this.app = express()
     this.port = 9090
 
+    this.connectToDatabase()
     this.initializeMiddlewares()
     this.initializeRoutes(routes)
   }
@@ -28,6 +30,10 @@ export default class App {
 
   public initializeRoutes(routes: Routes[]) {
     routes.forEach(route => this.app.use(`/`, route.router))
+  }
+
+  public connectToDatabase() {
+    connect(`mongodb://localhost:27017`)
   }
 
   public initializeMiddlewares() {
