@@ -1,0 +1,8 @@
+{
+  "name": "email-sender-nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/igorsromero/email-sender-nodejs.git",
+  "author": "Igor Solfa Romero <igorsolfaromero@gmail.com>",
+  "license": "MIT"
+}
