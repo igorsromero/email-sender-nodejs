@@ -6,3 +6,8 @@
 ```
 yarn tsc --init
 ```
+
+## Basic configuration ts-jest
+```
+yarn ts-jest config:init
+```
