@@ -1,4 +1,5 @@
 import { prop, getModelForClass } from "@typegoose/typegoose"
+import mongoose from "mongoose"
 
 export class Provider {
   @prop({ type: String, required: true, trim: true })
@@ -21,6 +22,12 @@ export class Provider {
 
   @prop({ type: Number, required: true})
   tlsPort: number
+  
+  @prop({ type: Boolean, required: true })
+  default: boolean
+
+  @prop({ type: mongoose.Schema.Types.ObjectId, ref: "User", required: false})
+  user: mongoose.Schema.Types.ObjectId
 }
 
 export const ProviderModel = getModelForClass(Provider)
@@ -32,5 +39,7 @@ export const ProviderSchema = {
   tls: Boolean,
   authentication: Boolean,
   sslPort: Number,
-  tlsPort: Number
+  tlsPort: Number,
+  default: Boolean,
+  user: mongoose.Schema.Types.ObjectId,
 }
