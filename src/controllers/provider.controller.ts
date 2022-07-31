@@ -4,24 +4,22 @@ import ProviderService from "../services/provider.service"
 export default class ProviderController {
   public providerService = new ProviderService()
 
-  public save = async (req: Request, res: Response, next: NextFunction) => {
+  public getAll = async (req: Request, res: Response, next: NextFunction) => {
     try {
+      const providers = await this.providerService.getAll()
 
-      const provider = req.body
-
-      const { providerId } = await this.providerService.save({provider})
-
-      res.status(201).json({ providerId })
+      res.status(200).json({ providers })
     } catch (error) {
       next(error)
     }
   }
 
-  public getAll = async (req: Request, res: Response, next: NextFunction) => {
+  public save = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const providers = await this.providerService.getAll()
+      const provider = req.body
+      const { providerId } = await this.providerService.save({ provider })
 
-      res.status(200).json({providers})
+      res.status(201).json({ providerId })
     } catch (error) {
       next(error)
     }

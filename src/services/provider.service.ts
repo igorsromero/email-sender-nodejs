@@ -16,11 +16,9 @@ export default class ProviderService {
   }
 
   public async save({ provider }: SaveArgs): SaveReturn {
-    const newProvider = new ProviderModel(provider)
-    console.log(newProvider)
-    await newProvider.save()
+    const p = new ProviderModel(provider)
+    await p.save()
 
-
-    return {providerId: newProvider._id}
+    return { providerId: p._id }
   }
 }
